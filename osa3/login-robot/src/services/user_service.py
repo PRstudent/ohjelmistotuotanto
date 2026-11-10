@@ -1,5 +1,6 @@
 from entities.user import User
 import re
+import sys, pdb
 
 
 class UserInputError(Exception):
@@ -46,10 +47,8 @@ class UserService:
 
         if not re.match("^.{8,}$", password):
             raise UserInputError("Password is too short (under 8 characters)")
-
+        #pdb.Pdb(stdout=sys.__stdout__).set_trace()
         if not re.search("\d+", password):
             raise UserInputError("Password cannot be formed only from letters")
         
-        #if re.match("^\w{2,}[a-z]$", username):
-        #    raise UserInputError("Invalid username")
         # toteuta loput tarkastukset tänne ja nosta virhe virhetilanteissa
